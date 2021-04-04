@@ -6,6 +6,7 @@ The SDK supports both synchronous RESTful API invoking and subscribing the marke
 ## Update log
 >1.1.1
 >Add proxy support 
+>
 >1.1.0
 >Add binance_d for delivery futures
 
@@ -31,9 +32,12 @@ import binance_d  # For delivery futures
 ```
 ### Using Proxy
 define proxy dict like
+
 proxyDict = dict(http='http://ip:port',
              https='http://ip:port') 
+             
 use it like below: 
+
 request_client = RequestClient(api_key=g_api_key, secret_key=g_secret_key, proxy=proxyDict)
 
 The example code is in python3/example.
