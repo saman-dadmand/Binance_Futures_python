@@ -11,10 +11,12 @@ from binance_d.base.printobject import *
 
 class RestApiRequestImpl(object):
 
-    def __init__(self, api_key, secret_key, server_url="https://dapi.binance.com"):
+    def __init__(self, api_key, secret_key,proxy, server_url="https://dapi.binance.com"):
         self.__api_key = api_key
         self.__secret_key = secret_key
         self.__server_url = server_url
+        self.__proxy = proxy
+
 
     def __create_request_by_get(self, url, builder):
         request = RestApiRequest()
@@ -22,6 +24,7 @@ class RestApiRequestImpl(object):
         request.host = self.__server_url
         request.header.update({'Content-Type': 'application/json'})
         request.url = url + "?" + builder.build_url()
+        request.proxy = self.__proxy
         return request
 
     def __create_request_by_get_with_apikey(self, url, builder):
@@ -31,6 +34,7 @@ class RestApiRequestImpl(object):
         request.header.update({'Content-Type': 'application/json'})
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
+        request.proxy = self.__proxy
          # For develop
         print("====== Request ======")
         print(request)
@@ -49,6 +53,7 @@ class RestApiRequestImpl(object):
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.post_body = builder.post_map
         request.url = url + "?" + builder.build_url()
+        request.proxy = self.__proxy
         # For develop
         print("====== Request ======")
         print(request)
@@ -66,6 +71,7 @@ class RestApiRequestImpl(object):
         request.header.update({'Content-Type': 'application/json'})
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
+        request.proxy = self.__proxy
         # For develop
         print("====== Request ======")
         print(request)
@@ -83,6 +89,7 @@ class RestApiRequestImpl(object):
         request.header.update({"Content-Type": "application/x-www-form-urlencoded"})
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
+        request.proxy = self.__proxy
         # For develop
         print("====== Request ======")
         print(request)
@@ -100,6 +107,7 @@ class RestApiRequestImpl(object):
         request.header.update({'Content-Type': 'application/json'})
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
+        request.proxy = self.__proxy
         # For develop
         print("====== Request ======")
         print(request)

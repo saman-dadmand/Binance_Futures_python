@@ -23,8 +23,10 @@ class RequestClient(object):
             secret_key = kwargs["secret_key"]
         if "url" in kwargs:
             url = kwargs["url"]
+        if "proxy" in kwargs:
+            proxy = kwargs["proxy"]
         try:
-            self.request_impl = RestApiRequestImpl(api_key, secret_key, url)
+            self.request_impl = RestApiRequestImpl(api_key, secret_key,proxy, url)
         except Exception:
             pass
         self.limits = {}
